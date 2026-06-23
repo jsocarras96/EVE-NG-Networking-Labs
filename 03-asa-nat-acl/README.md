@@ -62,7 +62,6 @@ The goal is to practice routing, firewall filtering, NAT, inter-site connectivit
 - NAT
 - Inter-site connectivity
 - Network troubleshooting
-- EVE-NG lab documentation
 
 ## Configuration Files
 
