@@ -1,10 +1,33 @@
-# Multi-Site Network Lab with ASA Firewall
+# ASA Destination NAT Lab for Movable Server-A
 
-## Objective
+##Objective
 
-This lab simulates a small multi-site network using Cisco routers, switches, an ASA firewall, and Linux servers in EVE-NG.
+This lab was created to demonstrate how a Cisco ASA can be configured to allow an external client to reach an internal server using a fixed destination IP address, even when the real server is moved between different sites.
 
-The goal is to practice routing, firewall filtering, NAT, inter-site connectivity, and basic network troubleshooting between Site-A, Site-B, an external client, and an ISP/server network.
+The main requirement is that any client behind R-Client should be able to reach 8.8.8.8 using ICMP, SSH, or HTTPS. The ASA translates that destination IP to the current real IP address of Server-A, depending on where the server is located.
+
+Business Scenario
+
+A network engineer requested a lab example showing how the ASA configuration would work before applying a similar design in a real environment.
+
+The company has two internal sites:
+
+Site-A: 192.168.1.0/24
+Site-B: 10.100.100.0/24
+
+Server-A can be located in either site:
+
+Server-A in Site-A: 192.168.1.10
+Server-A in Site-B: 10.100.100.10
+
+External clients should not need to know the real IP address of Server-A. They should always connect to the same destination IP: 8.8.8.8.
+
+Lab Goals
+Site-A and Site-B must be able to communicate with each other.
+Both sites must have connectivity to the external server network 4.4.4.0/29.
+Clients behind R-Client must be able to reach 8.8.8.8 using ICMP, SSH, or HTTPS.
+The ASA must translate traffic destined to 8.8.8.8 into Server-A's current real IP address.
+If Server-A is moved from one site to the other, only the ASA SERVER_A object needs to be updated.
 
 ## Topology
 
