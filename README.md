@@ -3,7 +3,9 @@ This repository contains networking labs built and documented in EVE-NG, focused
 
 The goal of this repository is to document practical network scenarios with topology diagrams, device configurations, verification steps, and troubleshooting notes.
 
-##Skills Demonstrated
+Passwords, hashes, serial numbers, and sensitive values are removed or changed before publishing.
+
+Skills Demonstrated
 
 - Cisco IOS and ASA configuration
 - Routing and switching fundamentals
@@ -11,7 +13,7 @@ The goal of this repository is to document practical network scenarios with topo
 - Network troubleshooting and verification
 - Technical documentation using GitHub
 
-##Documentation Format
+Documentation Format
 
 Each lab includes:
 
@@ -21,8 +23,3 @@ Each lab includes:
 - Sanitized configuration files
 - Verification commands and test results
 - Troubleshooting notes
-
-#Notes
-
-All labs are built for learning, testing, and documentation purposes.
-Passwords, hashes, serial numbers, and sensitive values are removed before publishing.
