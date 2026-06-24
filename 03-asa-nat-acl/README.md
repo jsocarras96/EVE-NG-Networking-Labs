@@ -96,6 +96,3 @@ Configuration files are stored in the `configs` folder.
 - [SW-A Configuration](configs/SW-A.txt)
 - [SW-B Configuration](configs/SW-B.txt)
 - [R-ISP Configuration](configs/R-ISP.txt)
-show running-config
-ping
-traceroute
