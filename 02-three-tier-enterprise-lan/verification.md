@@ -17,7 +17,7 @@ Expected result:
 * Trunk links should allow VLANs 10, 20, 30, 99, 100, and 999.
 * Native VLAN should be VLAN 99.
 
-Example devices to verify:
+Verifications:
 
 ```cisco
 CSW-DC-01#sh vlan brief
