@@ -264,6 +264,8 @@ Expected result:
 * Root bridge placement should match the lab design.
 * Access ports should use PortFast and BPDU Guard where appropriate.
 
+Verifications:
+
 ```cisco
 CSW-DC-01#show spanning-tree summary
 Switch is in rapid-pvst mode
