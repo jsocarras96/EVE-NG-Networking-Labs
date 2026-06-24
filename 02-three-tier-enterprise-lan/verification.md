@@ -1,0 +1,220 @@
+# Verification
+
+This file documents the commands and tests used to verify the Three-Tier Enterprise LAN Lab.
+
+## 1. VLAN and Trunk Verification
+
+Commands used:
+
+```cisco
+show vlan brief
+show interfaces trunk
+```
+
+Expected result:
+
+* VLANs 10, 20, 30, 99, 100, and 999 should exist.
+* Trunk links should allow VLANs 10, 20, 30, 99, 100, and 999.
+* Native VLAN should be VLAN 99.
+
+Example devices to verify:
+
+```cisco
+CSW-DC-01
+ASW-DC-01
+ASW-DC-02
+CSW-A-01
+ASW-A-01
+CSW-B-01
+ASW-B-01
+```
+
+Status: Passed / Pending
+
+## 2. STP Verification
+
+Commands used:
+
+```cisco
+show spanning-tree summary
+show spanning-tree vlan 10
+show spanning-tree vlan 20
+show spanning-tree vlan 99
+```
+
+Expected result:
+
+* Rapid-PVST should be enabled.
+* Root bridge placement should match the lab design.
+* Access ports should use PortFast and BPDU Guard where appropriate.
+
+Status: Passed / Pending
+
+## 3. Layer 3 Interface Verification
+
+Commands used:
+
+```cisco
+show ip interface brief
+show ip route connected
+```
+
+Expected result:
+
+* Routed interfaces should be up/up.
+* SVIs should be up/up for active VLANs.
+* Connected routes should appear for local VLANs and point-to-point links.
+
+Status: Passed / Pending
+
+## 4. OSPF Verification
+
+Commands used:
+
+```cisco
+show ip ospf neighbor
+show ip ospf interface brief
+show ip route ospf
+show ip protocols
+```
+
+Expected result:
+
+* OSPF neighbors should form between Layer 3 devices.
+* Remote site networks should appear in the routing table as OSPF routes.
+* User/server VLANs should be advertised into OSPF.
+* End-user VLAN interfaces should be passive when appropriate.
+
+Status: Passed / Pending
+
+## 5. Inter-Site Connectivity Tests
+
+Test from Data Center to Site-A:
+
+```bash
+ping 10.1.99.10
+```
+
+Test from Data Center to Site-B:
+
+```bash
+ping 10.2.99.10
+```
+
+Test from Site-A to Site-B:
+
+```bash
+ping 10.2.99.10
+```
+
+Test from Site-B to Site-A:
+
+```bash
+ping 10.1.99.10
+```
+
+Expected result:
+
+* Devices in different sites should be able to reach each other according to the routing design.
+
+Status: Passed / Pending
+
+## 6. Default Route Verification
+
+Commands used:
+
+```cisco
+show ip route 0.0.0.0
+show ip route
+```
+
+Expected result:
+
+* Core switches should have a default route pointing toward the upstream router.
+* Remote sites should have a valid path back to the Data Center and other site networks.
+
+Status: Passed / Pending
+
+## 7. Isolated VLAN Verification
+
+Commands used:
+
+```cisco
+show access-lists
+show running-config interface vlan 999
+```
+
+Connectivity tests from an isolated VLAN host:
+
+```bash
+ping <default-gateway>
+ping <internal-site-network>
+ping <allowed-external-destination>
+```
+
+Expected result:
+
+* VLAN 999 should be restricted by ACL.
+* The isolated VLAN should not have unrestricted access to internal private networks.
+* Allowed traffic should work according to the ACL design.
+
+Status: Passed / Pending
+
+## 8. SSH Management Verification
+
+Commands used:
+
+```cisco
+show ip ssh
+show running-config | section line vty
+```
+
+SSH test:
+
+```bash
+ssh admin@<device-management-ip>
+```
+
+Expected result:
+
+* SSH version 2 should be enabled.
+* VTY lines should use local login.
+* Remote access should be limited to SSH.
+
+Status: Passed / Pending
+
+## 9. Port Security / Access Port Verification
+
+Commands used:
+
+```cisco
+show port-security
+show port-security interface gigabitEthernet0/1
+show interfaces status
+```
+
+Expected result:
+
+* Access ports should be assigned to the correct VLAN.
+* PortFast and BPDU Guard should be enabled on end-device ports.
+* Port security should match the lab requirements if configured.
+
+Status: Passed / Pending
+
+## 10. Final Result
+
+The lab successfully verifies:
+
+* VLAN segmentation
+* 802.1Q trunking
+* Native VLAN 99
+* Rapid-PVST
+* Layer 3 routed links
+* Inter-VLAN routing
+* OSPF routing between sites
+* Default routing
+* Isolated VLAN filtering
+* SSH-based management access
+* Basic enterprise LAN troubleshooting
+
+Final status: Passed / Pending
