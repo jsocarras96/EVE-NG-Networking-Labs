@@ -532,7 +532,7 @@ Commands used:
 
 ```cisco
 show ip interface brief
-show ip route connected
+show ip route
 ```
 
 Expected result:
@@ -991,7 +991,7 @@ Violation Mode             : Restrict
 Aging Time                 : 0 mins
 Aging Type                 : Absolute
 SecureStatic Address Aging : Disabled
-Maximum MAC Addresses      : 1
+Maximum MAC Addresses      : 2
 Total MAC Addresses        : 0
 Configured MAC Addresses   : 0
 Sticky MAC Addresses       : 0
@@ -1036,9 +1036,10 @@ The lab successfully verifies:
 * Rapid-PVST
 * Layer 3 routed links
 * Inter-VLAN routing
-* OSPF routing between sites
+* OSPF routing in the Data Center segment
+* Static routing between sites
+* VLAN 999 filtering
 * Default routing
-* Isolated VLAN filtering
 * SSH-based management access
 * Basic enterprise LAN troubleshooting
 
