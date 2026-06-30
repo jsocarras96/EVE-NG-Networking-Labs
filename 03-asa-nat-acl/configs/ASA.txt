@@ -2,13 +2,13 @@ ASAv# sh run
 : Saved
 
 :
-: Serial Number: 9AKK55WTTKC
+: Serial Number: ************
 : Hardware:   ASAv, 2048 MB RAM, CPU Pentium II 3417 MHz
 :
 ASA Version 9.9(2)
 !
 hostname ASAv
-enable password $sha512$5000$DzAOlVIa7jLMXC/sbYutMQ==$RPzaLRzBfw6lTd1pJDSIkA== pbkdf2
+enable password **************
 names
 
 !
@@ -80,7 +80,7 @@ no asdm history enable
 arp timeout 14400
 no arp permit-nonconnected
 arp rate-limit 8192
-nat (outside,inside) source dynamic R-CLIENT interface destination static OBJ_VIRTUAL_DEST SA
+nat (outside,inside) source dynamic R-CLIENT interface destination static OBJ_VIRTUAL_DEST
 access-group OUTSIDE_INSIDE in interface outside
 router ospf 1
  network 192.0.2.0 255.255.255.252 area 0
@@ -118,7 +118,7 @@ threat-detection basic-threat
 threat-detection statistics access-list
 no threat-detection statistics tcp-intercept
 dynamic-access-policy-record DfltAccessPolicy
-username admin password $sha512$5000$kJADvEwOkw9K5bNWUsAsGQ==$IUVEocbIQbGUylBguHRyTw== pbkdf5
+username ***** password ********************
 !
 class-map inspection_default
  match default-inspection-traffic
