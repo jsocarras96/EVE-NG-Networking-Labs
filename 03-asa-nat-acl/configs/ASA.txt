@@ -62,7 +62,7 @@ banner motd ^
 ftp mode passive
 object network SERVER_A
  host 10.100.100.10
- description Server-A in Site-A
+ description Server-A in Site-B
 object network R-CLIENT
  host 203.0.113.1
 object network OBJ_VIRTUAL_DEST
