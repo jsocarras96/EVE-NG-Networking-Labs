@@ -67,9 +67,9 @@ object network R-CLIENT
  host 203.0.113.1
 object network OBJ_VIRTUAL_DEST
  host 8.8.8.8
-access-list OUTSIDE_INSIDE extended permit icmp any any
-access-list OUTSIDE_INSIDE extended permit tcp any any eq ssh
-access-list OUTSIDE_INSIDE extended permit tcp any any eq https
+access-list OUTSIDE_INSIDE extended permit icmp any host 8.8.8.8
+access-list OUTSIDE_INSIDE extended permit tcp any host 8.8.8.8 eq ssh
+access-list OUTSIDE_INSIDE extended permit tcp any host 8.8.8.8 eq https
 pager lines 23
 mtu outside 1500
 mtu inside 1500
