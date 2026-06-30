@@ -27,9 +27,7 @@ The lab focuses on building a scalable enterprise LAN design with redundant gate
 * Rapid-PVST
 * Layer 3 routed ports
 * OSPF Area 0
-* Passive OSPF interfaces
 * Static default route
-* Management ACLs
 
 ## Lab Goals
 
@@ -40,7 +38,6 @@ The lab focuses on building a scalable enterprise LAN design with redundant gate
 5. Use routed ports between Distribution and Core layers.
 6. Advertise internal networks using OSPF Area 0.
 7. Use passive interfaces to prevent unnecessary OSPF hellos toward end-user VLANs.
-8. Restrict SSH access to network devices using management ACLs.
 
 ## VLAN Summary
 
@@ -60,8 +57,6 @@ The lab uses OSPF Area 0 between the Core and Distribution layers. Routed ports 
 This design keeps Layer 2 boundaries smaller and makes the core routing layer more scalable and stable.
 
 ## High Availability
-
-HSRP is used at the Distribution layer to provide redundant default gateways for user VLANs.
 
 Rapid-PVST is used to control Layer 2 path selection and avoid switching loops.
 
